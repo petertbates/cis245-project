@@ -8,8 +8,9 @@ def main():
 	menuSelection = mainMenu(menuSelection)
 	while menuSelection != 'exit':
 		menuSelection = inputCheck(menuSelection)
+		print(menuSelection)
+		print(type(menuSelection))
 		getWeather(menuSelection)
-
 		menuSelection = mainMenu(menuSelection)
 		
 def mainMenu(menuSelect):
@@ -29,13 +30,13 @@ def inputCheck(menuChoice):
 	elif(menuChoice != ''):
 		try:
 			int(menuChoice)
-			print("Number")
 		except ValueError:
-			print("Noooope")
-		print("good pass")
-		print(menuChoice)
+			print("MenuChoice to get back to citycheck")
+			return(menuChoice)
 
-	return menuChoice
+		else:
+			print("checking zipcode")
+			return zipCode
 
 def getWeather(location):
 	#This will call using location to get weather information to pass back
