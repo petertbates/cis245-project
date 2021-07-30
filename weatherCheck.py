@@ -27,8 +27,13 @@ def inputCheck(menuChoice):
 	if(menuChoice.lower() == 'exit'):
 		menuChoice = 'exit'
 	elif(menuChoice != ''):
+		try:
+			int(menuChoice)
+			print("Number")
+		except ValueError:
+			print("Noooope")
 		print("good pass")
-		print (menuChoice)
+		print(menuChoice)
 
 	return menuChoice
 
