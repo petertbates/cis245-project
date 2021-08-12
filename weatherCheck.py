@@ -20,7 +20,9 @@ def main():
 			menuSelection = inputCheck(menuSelection)
 		if menuSelection != '' and menuSelection != 'exit':
 			weather = getWeather(menuSelection)
-			displayWeather(weather)
+			while weather != '':
+				displayWeather(weather)
+				weather = ''
 		
 		menuSelection = mainMenu(menuSelection)
 		
@@ -54,7 +56,11 @@ def inputCheck(menuChoice):
 			return url
 
 def getWeather(url):
-	response = requests.get(url)
+	try:
+		response = requests.get(url)
+	except requests.exceptions.RequestException:
+		print ("Sorry, there was an error with the connection. Please try again.")
+		return ''
 	return response.json()
 
 def displayWeather(weather):
